@@ -2,61 +2,15 @@
 <html>
 <head>
   <title>Smart Math Solver</title>
-
-  <style>
-    body {
-      font-family: Arial;
-      background: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .app {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      width: 280px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      text-align: center;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #0056b3;
-    }
-
-    h3 {
-      margin-top: 15px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="app">
   <h2>Smart Math Solver</h2>
 
-  <input id="input" placeholder="Type math e.g. 2+2">
+  <input id="input" placeholder="Type math e.g. 2+2 or 5×3 or 10÷2">
+
   <button onclick="solve()">Solve</button>
 
   <h3 id="result"></h3>
@@ -68,6 +22,10 @@ function solve() {
   let result = document.getElementById("result");
 
   try {
+    // Fix symbols
+    input = input.replace(/×/g, "*");
+    input = input.replace(/÷/g, "/");
+
     result.innerText = "Answer: " + eval(input);
   } catch {
     result.innerText = "Invalid input";
