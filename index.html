@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Math Solver</title>
+</head>
+<body>
+
+<h2>Smart Math Solver</h2>
+
+<input id="input" placeholder="Type math e.g. 2+2">
+<button onclick="solve()">Solve</button>
+
+<h3 id="result"></h3>
+
+<script>
+function solve() {
+  let input = document.getElementById("input").value;
+  let result = document.getElementById("result");
+
+  try {
+    result.innerText = "Answer: " + eval(input);
+  } catch {
+    result.innerText = "Invalid input";
+  }
+}
+</script>
+
+</body>
+</html>
